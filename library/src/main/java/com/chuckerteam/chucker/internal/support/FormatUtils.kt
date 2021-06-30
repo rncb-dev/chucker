@@ -13,6 +13,8 @@ import java.io.StringWriter
 import java.io.UnsupportedEncodingException
 import java.net.URLDecoder
 import java.nio.charset.Charset
+import java.text.SimpleDateFormat
+import java.util.Date
 import java.util.Locale
 import javax.xml.XMLConstants
 import javax.xml.parsers.DocumentBuilder
@@ -122,5 +124,9 @@ internal object FormatUtils {
         val pw = PrintWriter(sw)
         throwable.printStackTrace(pw)
         return sw.toString()
+    }
+
+    fun Date.formatDate(pattern: String): String {
+        return SimpleDateFormat(pattern, Locale("ru", "RU")).format(this)
     }
 }
