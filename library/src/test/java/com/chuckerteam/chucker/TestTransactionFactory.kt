@@ -1,6 +1,7 @@
 package com.chuckerteam.chucker
 
 import com.chuckerteam.chucker.internal.data.entity.HttpTransaction
+import com.chuckerteam.chucker.internal.support.FormatUtils
 import com.chuckerteam.chucker.internal.support.FormatUtils.formatDate
 import java.util.Date
 
@@ -47,8 +48,8 @@ internal object TestTransactionFactory {
         Response: 200 OK
         SSL: No
         
-        Request time: ${Date(1300000).formatDate("EEE dd MMM HH:mm:ss.SSS")}
-        Response time: ${Date(1300300).formatDate("EEE dd MMM HH:mm:ss.SSS")}
+        Request time: ${Date(1300000).formatDate(FormatUtils.FORMAT_DATE_PATTERN)}
+        Response time: ${Date(1300300).formatDate(FormatUtils.FORMAT_DATE_PATTERN)}
         Duration: 1000 ms
         
         Request size: 1.0 kB
@@ -75,8 +76,8 @@ internal object TestTransactionFactory {
         Response: 200 OK
         SSL: No
         
-        Request time: ${Date(1300000).formatDate("EEE dd MMM HH:mm:ss.SSS")}
-        Response time: ${Date(1300300).formatDate("EEE dd MMM HH:mm:ss.SSS")}
+        Request time: ${Date(1300000).formatDate(FormatUtils.FORMAT_DATE_PATTERN)}
+        Response time: ${Date(1300300).formatDate(FormatUtils.FORMAT_DATE_PATTERN)}
         Duration: 1000 ms
         
         Request size: 1.0 kB

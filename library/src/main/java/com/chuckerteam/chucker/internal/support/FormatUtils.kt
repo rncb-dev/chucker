@@ -31,6 +31,8 @@ internal object FormatUtils {
 
     private const val SI_MULTIPLE = 1000
     private const val BASE_TWO_MULTIPLE = 1024
+    const val FORMAT_TIME_PATTERN = "HH:mm:ss.SSS"
+    const val FORMAT_DATE_PATTERN = "EEE dd MMM HH:mm:ss.SSS"
 
     fun formatHeaders(httpHeaders: List<HttpHeader>?, withMarkup: Boolean): String {
         return httpHeaders?.joinToString(separator = "") { header ->
@@ -127,6 +129,6 @@ internal object FormatUtils {
     }
 
     fun Date.formatDate(pattern: String): String {
-        return SimpleDateFormat(pattern, Locale("ru", "RU")).format(this)
+        return SimpleDateFormat(pattern, Locale.US).format(this)
     }
 }

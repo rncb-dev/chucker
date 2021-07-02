@@ -94,10 +94,10 @@ internal class HttpTransaction(
         }
 
     val requestDateString: String?
-        get() = requestDate?.let { Date(it).formatDate("EEE dd MMM HH:mm:ss.SSS") }
+        get() = requestDate?.let { Date(it).formatDate(FormatUtils.FORMAT_DATE_PATTERN) }
 
     val responseDateString: String?
-        get() = responseDate?.let { Date(it).formatDate("EEE dd MMM HH:mm:ss.SSS") }
+        get() = responseDate?.let { Date(it).formatDate(FormatUtils.FORMAT_DATE_PATTERN) }
 
     val durationString: String?
         get() = tookMs?.let { "$it ms" }
