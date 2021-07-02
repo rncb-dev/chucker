@@ -129,6 +129,6 @@ internal object FormatUtils {
     }
 
     fun Date.formatDate(pattern: String): String {
-        return SimpleDateFormat(pattern, Locale.US).format(this)
+        return SimpleDateFormat(pattern, Locale.getDefault()).format(this)
     }
 }
