@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'maven-publish'
 
 android {
     compileSdkVersion rootProject.compileSdkVersion
@@ -83,3 +84,16 @@ dependencies {
 
 apply from: rootProject.file('gradle/gradle-mvn-push.gradle')
 apply from: rootProject.file('gradle/kotlin-static-analysis.gradle')
+
+afterEvaluate {
+    publishing {
+        publications {
+            // Creates a Maven publication called "release".
+            release(MavenPublication) {
+                groupId = 'com.github.rncb-dev'
+                artifactId = 'chucker'
+                version = '3.5.1'
+            }
+        }
+    }
+}
