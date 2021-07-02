@@ -14,7 +14,9 @@ import com.chuckerteam.chucker.R
 import com.chuckerteam.chucker.databinding.ChuckerListItemTransactionBinding
 import com.chuckerteam.chucker.internal.data.entity.HttpTransaction
 import com.chuckerteam.chucker.internal.data.entity.HttpTransactionTuple
-import java.text.DateFormat
+import com.chuckerteam.chucker.internal.support.FormatUtils
+import com.chuckerteam.chucker.internal.support.FormatUtils.formatDate
+import java.util.Date
 import javax.net.ssl.HttpsURLConnection
 
 internal class TransactionAdapter internal constructor(
@@ -68,7 +70,7 @@ internal class TransactionAdapter internal constructor(
             itemBinding.apply {
                 path.text = "${transaction.method} ${transaction.getFormattedPath(encode = false)}"
                 host.text = transaction.host
-                timeStart.text = DateFormat.getTimeInstance().format(transaction.requestDate)
+                timeStart.text = transaction.requestDate?.let { Date(it).formatDate(FormatUtils.FORMAT_TIME_PATTERN) }.orEmpty()
 
                 setProtocolImage(if (transaction.isSsl) ProtocolResources.Https() else ProtocolResources.Http())
 

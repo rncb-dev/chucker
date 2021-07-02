@@ -9,6 +9,7 @@ import androidx.room.Entity
 import androidx.room.Ignore
 import androidx.room.PrimaryKey
 import com.chuckerteam.chucker.internal.support.FormatUtils
+import com.chuckerteam.chucker.internal.support.FormatUtils.formatDate
 import com.chuckerteam.chucker.internal.support.FormattedUrl
 import com.chuckerteam.chucker.internal.support.JsonConverter
 import com.google.gson.reflect.TypeToken
@@ -93,10 +94,10 @@ internal class HttpTransaction(
         }
 
     val requestDateString: String?
-        get() = requestDate?.let { Date(it).toString() }
+        get() = requestDate?.let { Date(it).formatDate(FormatUtils.FORMAT_DATE_PATTERN) }
 
     val responseDateString: String?
-        get() = responseDate?.let { Date(it).toString() }
+        get() = responseDate?.let { Date(it).formatDate(FormatUtils.FORMAT_DATE_PATTERN) }
 
     val durationString: String?
         get() = tookMs?.let { "$it ms" }
